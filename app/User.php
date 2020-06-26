@@ -11,12 +11,20 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * Get the User Informations associated with the user
+     */
+    public function userInfo()
+    {
+        return $this->hasOne('App\UserInformation');
+    }
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'email', 'password', 'role', 'profile_img'
     ];
 
     /**
