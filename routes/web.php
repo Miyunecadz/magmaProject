@@ -24,7 +24,7 @@ Route::get('/register', 'UserRegisterController@view_user_information');
 
 
 Route::middleware(['auth','role:admin'])->group(function () {
-    
+    Route::resource('announcement','AnnouncementsController')->middleware('auth');
 });
 
 
@@ -34,5 +34,5 @@ Route::middleware(['auth','role:guest'])->group(function () {
 
 
 Route::middleware(['auth','role:user'])->group(function () {
-    
+
 });
