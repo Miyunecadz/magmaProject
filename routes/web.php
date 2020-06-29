@@ -21,13 +21,18 @@ Auth::routes(['register' => false]);
 
 
 Route::middleware(['auth','role:admin'])->group(function () {
-    Route::get('/announcements', 'AnnouncementsController@index');
-    Route::post('/announcements','AnnouncementsController@store');
-    Route::get('/announcements/create','AnnouncementsController@create');
-    Route::get('/announcements/{announcement}','AnnouncementsController@show');
-    Route::delete('/announcements/{announcement}', 'AnnouncementsController@destroy');
-    Route::put('/announcements/{announcement}', 'AnnouncementsController@update');
-    Route::get('/announcements/{announcement}/edit','AnnouncementsController@edit');
+
+    Route::resource('announcements', 'AnnouncementsController');
+
+    /*
+        Route::get('/announcements', 'AnnouncementsController@index');
+        Route::post('/announcements','AnnouncementsController@store');
+        Route::get('/announcements/create','AnnouncementsController@create');
+        Route::get('/announcements/{announcement}','AnnouncementsController@show');
+        Route::delete('/announcements/{announcement}', 'AnnouncementsController@destroy');
+        Route::put('/announcements/{announcement}', 'AnnouncementsController@update');
+        Route::get('/announcements/{announcement}/edit','AnnouncementsController@edit');
+    */
 
     Route::resource('comments','CommentsController');
 
