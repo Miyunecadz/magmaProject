@@ -15,7 +15,13 @@ class CreateDuesTable extends Migration
     {
         Schema::create('dues', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('slno');
+            $table->string('bill_month');
+            $table->decimal('bill_ammount');
+            $table->string('remarks');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

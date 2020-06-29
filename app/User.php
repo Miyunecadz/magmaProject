@@ -68,4 +68,9 @@ class User extends Authenticatable
         $roles = $this->getAttribute('role');
         return $roles;
     }
+
+    public function dues()
+    {
+        return $this->hasMany('\App\Due');
+    }
 }
