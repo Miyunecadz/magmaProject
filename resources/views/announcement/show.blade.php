@@ -57,6 +57,12 @@
                     <span class="mr-1"><strong>{{ $user_comment->user->name}}</strong></span>
                     <span>|</span>
                     <small class="mr1">{{$user_comment->created_at}}</small>
+
+                    @if($user_comment->user->role == "admin")
+                    <span>|</span>
+                    <small class="mr-1 text-danger">Admin</small>
+                    @endif
+
                     <br>
                     <span>{{ $user_comment->comment_value  }}</span>
                 </div>

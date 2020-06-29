@@ -24,7 +24,9 @@ Route::get('/register', 'UserRegisterController@view_user_information');
 
 
 Route::middleware(['auth','role:admin'])->group(function () {
-    Route::resource('announcement','AnnouncementsController');
+    Route::resource('announcements','AnnouncementsController');
+    Route::resource('comments','CommentsController');
+
 });
 
 
