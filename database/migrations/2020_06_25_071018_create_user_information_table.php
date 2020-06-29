@@ -16,7 +16,7 @@ class CreateUserInformationTable extends Migration
         Schema::create('user_information', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('name');
+            $table->string('fullname');
             $table->string('call_sign');
             $table->string('chapter');
             $table->string('contact_no');
@@ -53,11 +53,11 @@ class CreateUserInformationTable extends Migration
             $table->string('siblings5');
             $table->string('siblings6');
             $table->string('school_secondary');
-            $table->date('secondary_date_graduate');
+            $table->string('secondary_date_graduate');
             $table->string('school_college');
-            $table->date('college_date_graduate');
+            $table->string('college_date_graduate');
             $table->string('school_post');
-            $table->date('post_date_graduate');
+            $table->string('post_date_graduate');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
