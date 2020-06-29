@@ -7,6 +7,10 @@
         <div class="card-header">
             <h5 class="card-title">Step 2. Profile</h5>
         </div>
+        @php
+            $profile_info = session('profile_info')
+        @endphp
+
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -30,7 +34,7 @@
                     <div class="col-8">                        
                         <div class="form-group ">
                             <label for="fullname" class="bmd-label-floating">FULL NAME (Last name, First name MI.)</label>
-                            <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Ex. Cruz, Juan D.">
+                            <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Ex. Cruz, Juan D." value="{{ isset($profile_info)? $profile_info->fullname : old('fullname') }}">
                         </div>
                         <div class="form-group ">
                             <label for="username" class="bmd-label-floating">USERNAME</label>
@@ -38,15 +42,15 @@
                         </div>
                         <div class="form-group ">
                             <label for="email" class="bmd-label-floating">Email Address</label>
-                            <input type="text" class="form-control" id="email" name="email" placeholder="Email Address">
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Email Address" value="{{ old('email') }}">
                         </div>
                         <div class="form-group ">
                             <label for="password" class="bmd-label-floating">Password</label>
-                            <input type="password" class="form-control" id="password" name="password">
+                            <input type="password" class="form-control" id="password" name="password" value="{{ old('password') }}">
                         </div>
                         <div class="form-group ">
                             <label for="password_confirmation" class="bmd-label-floating">Re-type Password</label>
-                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" value="{{ old('password_confirmation') }}">
                         </div>
                     </div>
                 </div>
