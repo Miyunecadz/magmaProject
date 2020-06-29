@@ -39,10 +39,6 @@ Route::middleware(['auth','role:guest'])->group(function () {
 
 
 Route::middleware(['auth','role:user'])->group(function () {
-<<<<<<< HEAD
-
-=======
     Route::get('/home', 'HomeController@index')->name('home');
->>>>>>> 38f68cf91e75da84caeb597633f57fc449ee82a0
 });
 
