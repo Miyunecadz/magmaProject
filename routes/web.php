@@ -19,8 +19,11 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/register', 'UserRegisterController@view_user_information');
+
+Route::get('/register/info', 'UserRegisterController@view_user_information');
+Route::get('/register/profile', 'UserRegisterController@view_user_profile');
+Route::post('/register/profile/proceed', 'UserRegisterController@create_user_information');
+Route::post('/register/profile/create', 'UserRegisterController@create_user');
 
 
 Route::middleware(['auth','role:admin'])->group(function () {
@@ -36,5 +39,10 @@ Route::middleware(['auth','role:guest'])->group(function () {
 
 
 Route::middleware(['auth','role:user'])->group(function () {
+<<<<<<< HEAD
 
+=======
+    Route::get('/home', 'HomeController@index')->name('home');
+>>>>>>> 38f68cf91e75da84caeb597633f57fc449ee82a0
 });
+

@@ -17,4 +17,9 @@ class UserInformation extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    /**
+     * FIllable
+     */
+    protected $guarded = ['id'];
 }
