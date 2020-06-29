@@ -14,12 +14,14 @@ class Role
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $role)
+    public function handle($request, Closure $next, ...$roles)
     {
-        if(auth()->user()->getRoles() != $role){
-            throw new AuthorizationException('You do not have permission to view this page');
-        }
+        foreach($roles as $role){
 
-        return $next($request);
+            if(auth()->user()->getRoles() == $role){
+                return $next($request);
+            }
+        }
+        throw new AuthorizationException('You do not have permission to view this page');        
     }
 }

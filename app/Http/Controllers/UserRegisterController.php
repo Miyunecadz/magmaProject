@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\UserInformation;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UserRegisterController extends Controller
 {
@@ -89,6 +90,10 @@ class UserRegisterController extends Controller
 
         $profile_info->user_id = $user->id;
         $profile_info->save();
+
+        Auth::logout();
+
+        Auth::attempt(['email' => $request->email, 'password' => $request->password]);
 
         return redirect('/login');
     }
