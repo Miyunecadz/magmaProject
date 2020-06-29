@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('storage/{filename}', function ($filename) {
+    return Storage::get('profile_img/' . $filename);
+});
+
 Auth::routes(['register' => false]);
 
 

@@ -56,19 +56,33 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        @else
+                        
+                            @if(auth()->user()->role == 'user')
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{ url('member/dues') }}">
+                                        <span class="badge badge-pill badge-danger">9</span> Dues
+                                        <span class="sr-only">unread messages</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link " href="{{ url('member/announcements') }}">
+                                    <span class="badge badge-pill badge-info">119</span> Announcements
+                                    </a>
                                 </li>
                             @endif
-                        @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle  align-bottom" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <!-- <img src="{{ url( asset('storage/'. Auth::user()->profile_img)) }}" width="30" height="30" class="rounded-circle align-middle" alt="" loading="lazy"> -->
+                                    {{ Auth::user()->username }} <span class="caret"></span>
                                 </a>
+                                <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
+                                                                        
+                                    <a class="dropdown-item small" href="{{ url('member/profile/'. auth()->user()->username) }}">
+                                        Profile
+                                    </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item small" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
