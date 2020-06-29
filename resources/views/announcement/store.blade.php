@@ -14,15 +14,16 @@
         @endif
 
 
-        {!! Form::open(['route' => 'announcements.store', 'method'=>'post']) !!}
+        <form action="{{ url('/announcements')}}" method="post">
+            @csrf
             <div class="form-group">
-                {!! Form::label('title', 'Title') !!}
-                {!! Form::text('title', '', ['class'=>'form-control','placeholder'=>'Enter your title here....']) !!}
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" class="form-control" placeholder="Enter your title here....">
             </div>
             <div class="form-group">
-                {!! Form::label('description', 'Description') !!}
-                {!! Form::textarea('description', '', ['class'=>'form-control','placeholder'=>'Announcement Description here....']) !!}
+                <label for="description">Description</label>
+                <textarea name="description" id="description" cols="30" rows="10" placeholder="Announcement description here......" class="form-control"></textarea>
             </div>
-            {!! Form::submit('Submit', ['class'=> 'btn btn-primary']) !!}
-        {!! Form::close() !!}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
 @endsection

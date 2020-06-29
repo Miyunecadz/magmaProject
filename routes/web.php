@@ -25,9 +25,17 @@ Route::get('/register/profile', 'UserRegisterController@view_user_profile');
 Route::post('/register/profile/proceed', 'UserRegisterController@create_user_information');
 Route::post('/register/profile/create', 'UserRegisterController@create_user');
 
+Route::resource('announcements','AnnouncementsController');
 
 Route::middleware(['auth','role:admin'])->group(function () {
-    Route::resource('announcements','AnnouncementsController');
+    Route::get('/announcements', 'AnnouncementsController@index');
+    Route::post('/announcements','AnnouncementsController@store');
+    Route::get('/announcements/create','AnnouncementsController@create');
+    Route::get('/announcements/{announcement}','AnnouncementsController@show');
+    Route::delete('/announcements/{announcement}', 'AnnouncementsController@destroy');
+    Route::put('/announcements/{announcement}', 'AnnouncementsController@update');
+    Route::get('/announcements/{announcement}/edit','AnnouncementsController@edit');
+
     Route::resource('comments','CommentsController');
 
 });
