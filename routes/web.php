@@ -20,16 +20,6 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 
-<<<<<<< HEAD
-Route::get('/register/info', 'UserRegisterController@view_user_information');
-Route::get('/register/profile', 'UserRegisterController@view_user_profile');
-Route::post('/register/profile/proceed', 'UserRegisterController@create_user_information');
-Route::post('/register/profile/create', 'UserRegisterController@create_user');
-
-Route::resource('announcements','AnnouncementsController');
-
-=======
->>>>>>> 36d03f01cedb6dfaab63ec9d2cee26450485816e
 Route::middleware(['auth','role:admin'])->group(function () {
     Route::get('/announcements', 'AnnouncementsController@index');
     Route::post('/announcements','AnnouncementsController@store');
