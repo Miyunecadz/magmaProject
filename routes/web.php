@@ -21,7 +21,9 @@ Auth::routes(['register' => false]);
 
 
 Route::middleware(['auth','role:admin'])->group(function () {
-    
+    Route::resource('announcements','AnnouncementsController');
+    Route::resource('comments','CommentsController');
+
 });
 
 
