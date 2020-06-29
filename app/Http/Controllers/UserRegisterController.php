@@ -90,9 +90,11 @@ class UserRegisterController extends Controller
 
         $profile_info->user_id = $user->id;
         $profile_info->save();
-
+        
         Auth::logout();
 
+        $request->session()->flush();
+        
         Auth::attempt(['email' => $request->email, 'password' => $request->password]);
 
         return redirect('/login');

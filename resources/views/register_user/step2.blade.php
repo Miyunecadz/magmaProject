@@ -42,7 +42,7 @@
                         </div>
                         <div class="form-group ">
                             <label for="email" class="bmd-label-floating">Email Address</label>
-                            <input type="text" class="form-control" id="email" name="email" placeholder="Email Address" value="{{ old('email') }}">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" value="{{ old('email') }}">
                         </div>
                         <div class="form-group ">
                             <label for="password" class="bmd-label-floating">Password</label>

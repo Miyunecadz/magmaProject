@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
             'role' => 'admin',
             'username' => 'magmaadmin',
             'password' => Hash::make('password'),
-            'email' => 'magma@admin.com',
+            'email' => 'magma@admin',
             'profile_img' => '',
         ]);
 
@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
             'role' => 'guest',
             'username' => 'magmaguest',
             'password' => Hash::make('password'),
-            'email' => 'magma@guest.com',
+            'email' => 'magma@guest',
             'profile_img' => '',
         ]);
     }
