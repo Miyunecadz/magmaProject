@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 
+Route::get('/dues','DuesController@index');
 
 Route::middleware(['auth','role:admin'])->group(function () {
 
