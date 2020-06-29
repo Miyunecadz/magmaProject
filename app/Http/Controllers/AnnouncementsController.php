@@ -46,7 +46,7 @@ class AnnouncementsController extends Controller
         $announcements->description = $request->input('description');
         $announcements->save();
 
-        return redirect('/announcement');
+        return redirect('/announcements');
     }
 
     /**
@@ -93,7 +93,11 @@ class AnnouncementsController extends Controller
         $announcement->description = $request->input('description');
         $announcement->save();
 
-        return redirect('/announcements');
+        $links = session()->has('links') ? session('links') : [];
+        $currentLink = request()->path(); // Getting current URI like 'category/books/'
+        array_unshift($links, $currentLink); // Putting it in the beginning of links array
+        session(['links' => $links]); // Saving links array to the session
+        return redirect(session('links')[2]); // Will redirect 2 links back
     }
 
     /**
@@ -106,6 +110,6 @@ class AnnouncementsController extends Controller
     {
         $announcement = Announcement::find($id);
         $announcement->delete();
-        return redirect('/announcements');
+        return redirect('announcement.edit',compact('announcements'));
     }
 }
