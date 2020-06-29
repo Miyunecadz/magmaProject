@@ -44,4 +44,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    
+    /***
+     * @param $role
+     * @return mixed
+     */
+    public function hasRole()
+    {
+        return in_array($role, $this->getRoles());
+    }
+
+    /**
+     * @return array
+     */
+    public function getRoles()
+    {
+        $roles = $this->getAttribute('role');
+        return $roles;
+    }
 }

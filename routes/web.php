@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/register/info', 'UserRegisterController@view_user_information');
 Route::get('/register/profile', 'UserRegisterController@view_user_profile');
 Route::post('/register/profile/proceed', 'UserRegisterController@create_user_information');
@@ -37,6 +37,6 @@ Route::middleware(['auth','role:guest'])->group(function () {
 
 
 Route::middleware(['auth','role:user'])->group(function () {
-    
+    Route::get('/home', 'HomeController@index')->name('home');
 });
 

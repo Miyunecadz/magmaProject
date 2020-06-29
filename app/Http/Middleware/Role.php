@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
+use Illuminate\Auth\Access\AuthorizationException;
 
 use Closure;
 
@@ -15,8 +16,8 @@ class Role
      */
     public function handle($request, Closure $next, $role)
     {
-        if(auth()->user()->hasRole() == '$role'){
-            return $next($request);
+        if(auth()->user()->getRoles() != $role){
+            throw new AuthorizationException('You do not have permission to view this page');
         }
 
         return $next($request);
