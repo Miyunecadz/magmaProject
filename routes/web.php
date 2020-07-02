@@ -23,7 +23,8 @@ Route::get('storage/{filename}', function ($filename) {
 
 Auth::routes(['register' => false]);
 
-Route::get('/dues','DuesController@index');
+Route::get('/dues','DuesController@index')->name('dues.index');
+//Route::get('/dues/getdata','DuesController@getdata')->name('dues.getdata');
 
 Route::middleware(['auth','role:admin'])->group(function () {
 

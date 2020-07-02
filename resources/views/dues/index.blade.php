@@ -5,21 +5,36 @@
     <div class="d-flex flex-row">
         <h2 class="mr-auto">Dues</h2>
     </div>
-    <hr>
     <div class="table-responsive">
-       <table class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th class="sorting" data-sorting_type="asc" style="cursor: pointer">SLNO </th>
-                <th class="sorting" data-sorting_type="asc"style="cursor: pointer">Bill Month </th>
-                <th class="sorting" data-sorting_type="asc"style="cursor: pointer">Bill Ammount</th>
-                <th class="sorting" data-sorting_type="asc"style="cursor: pointer">Remarks</th>
-                <th class="sorting" data-sorting_type="asc"style="cursor: pointer">Date Paid</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-       </table>
+        <table id="dues_table" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>SLNO </th>
+                    <th>Bill Month </th>
+                    <th>Bill Ammount</th>
+                    <th>Remarks</th>
+                    <th>Date Paid</th>
+                </tr>
+            </thead>
+        </table>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#dues_table').DataTable({
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('dues.index') }}",
+            columns:[
+                {data:"slno",name:"slno"},
+                {data:"bill_month",name:"bill_month"},
+                {data:"bill_ammount",name:"bill_ammount"},
+                {data:"remarks",name:"remarks"},
+                {data:"created_at",name:"created_at"},
+            ]
+        });
+    });
+</script>
+
 @endsection
