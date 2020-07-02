@@ -9,16 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class DuesController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        if($request->ajax())
-        {
-            $data = Due::latest()->get();
-            return Datatables::of($data)
-                ->addIndexColumn()->make(true);
-        }
+        $dues = Due::orderBy('updated_at','desc')->paginate(10);
 
-        return view('dues.index');
+        return view('dues.index',compact('dues'));
     }
 
     public function get_data()
