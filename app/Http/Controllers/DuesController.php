@@ -22,4 +22,9 @@ class DuesController extends Controller
         dd($dues);
         return Datatables::of($dues)->make(true);
     }
+
+    public function save_data(Request $request)
+    {
+
+    }
 }
