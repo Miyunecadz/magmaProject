@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -26,5 +26,28 @@ class HomeController extends Controller
         return view('home');
     }
 
-   
+   /**
+    * Redirect page to proper page
+    */
+    public function pageDefault()
+    {
+        $role =  isset(auth()->user()->role)? auth()->user()->role: '';
+
+        if($role == "guest")
+        {
+            return redirect('/register/info');
+        }
+        elseif($role == "user")
+        {
+            return redirect('/home');
+        }
+        elseif($role == "admin")
+        {
+            return redirect('/announcements');
+        }
+        else
+        {
+            return view('welcome');
+        }
+    }
 }
