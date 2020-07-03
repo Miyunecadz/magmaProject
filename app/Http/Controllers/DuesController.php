@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Due;
-use DataTables;
-use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class DuesController extends Controller
 {
@@ -16,20 +15,29 @@ class DuesController extends Controller
         return view('dues.index',compact('dues'));
     }
 
-    public function get_data()
-    {
-        $dues = Due::select('slno','bill_month','bill_ammount','remarks','created_at')->where('user_id', Auth::user()->id);
-        dd($dues);
-        return Datatables::of($dues)->make(true);
-    }
-
     public function save_data(Request $request)
     {
+        $this->validate($request,[
+            'slno' => 'required',
+            'magma_name' => 'required',
+            'bill_month' => 'required',
+            'bill_amount' => 'required',
+        ]);
 
+        $dues = new Due;
+        $dues->user_id = $request->input('magma_name');
+        $dues->slno = $request->input('slno');
+        $dues->bill_month = $request->input('bill_month');
+        $dues->bill_amount = $request->input('bill_amount');
+        $dues->remarks = $request->input('remarks');
+        $dues->save();
+
+        return redirect()->back();
     }
 
     public function pay_due()
     {
-        return view('dues.create');
+        $magma_member = User::all();
+        return view('dues.create',compact('magma_member'));
     }
 }

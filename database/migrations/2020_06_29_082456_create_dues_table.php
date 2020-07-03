@@ -19,7 +19,7 @@ class CreateDuesTable extends Migration
             $table->string('slno');
             $table->string('bill_month');
             $table->decimal('bill_ammount');
-            $table->string('remarks');
+            $table->string('remarks')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
