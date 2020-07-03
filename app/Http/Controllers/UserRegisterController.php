@@ -95,7 +95,7 @@ class UserRegisterController extends Controller
         $user->profile_img = $filename;
         $user->save();
 
-        $profile_info->users_id = $user->id;
+        $profile_info->user_id = $user->id;
         $profile_info->save();
         
         Auth::logout();
