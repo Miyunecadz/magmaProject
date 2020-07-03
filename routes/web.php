@@ -42,6 +42,8 @@ Route::middleware(['auth','role:admin'])->group(function () {
 
     Route::resource('comments','CommentsController');
 
+    Route::get('/dues/pay', 'DuesController@pay_due');
+
 });
 
 

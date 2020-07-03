@@ -27,4 +27,9 @@ class DuesController extends Controller
     {
 
     }
+
+    public function pay_due()
+    {
+        return view('dues.create');
+    }
 }
