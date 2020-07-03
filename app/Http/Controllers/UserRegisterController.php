@@ -67,7 +67,6 @@ class UserRegisterController extends Controller
 
     public function create_user(Request $request)
     {
-        // dd($request);
         $validate = $request->validate([
             'username' => 'required|unique:users',
             'email' => 'required|email|unique:users',
@@ -79,14 +78,14 @@ class UserRegisterController extends Controller
         {
             $filename = $request->username . '-profile.' . $request->profile_img->getClientOriginalExtension();
             $request->profile_img->storeAs('profile_img', $filename);
-            
-            $profile_info = $request->session()->get('profile_info');
         }
         else
         {
             $filename =  "default-profile.png";
         }
 
+        
+        $profile_info = $request->session()->get('profile_info');
 
         $user = new User;
         $user->role = 'user';
