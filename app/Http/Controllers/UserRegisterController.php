@@ -75,10 +75,18 @@ class UserRegisterController extends Controller
             'profile_img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         
-        $filename = $request->username . '-profile.' . $request->profile_img->getClientOriginalExtension();
-        $request->profile_img->storeAs('profile_img', $filename);
-        
-        $profile_info = $request->session()->get('profile_info');
+        if ($request->profile_img != null)
+        {
+            $filename = $request->username . '-profile.' . $request->profile_img->getClientOriginalExtension();
+            $request->profile_img->storeAs('profile_img', $filename);
+            
+            $profile_info = $request->session()->get('profile_info');
+        }
+        else
+        {
+            $filename =  "default-profile.png";
+        }
+
 
         $user = new User;
         $user->role = 'user';
@@ -97,6 +105,7 @@ class UserRegisterController extends Controller
         
         Auth::attempt(['email' => $request->email, 'password' => $request->password]);
 
+        // If Auth fail
         return redirect('/login');
     }
 }

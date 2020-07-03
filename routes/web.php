@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@pageDefault');
 
 Route::get('storage/{filename}', function ($filename) {
     return Storage::get('profile_img/' . $filename);
