@@ -13,9 +13,9 @@ class UserInformation extends Model
     /**
      * User infomation belongs to
      */
-    public function user()
+    public function users()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
     /**

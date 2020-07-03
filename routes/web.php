@@ -55,9 +55,13 @@ Route::middleware(['auth','role:guest'])->group(function () {
 
 Route::middleware(['auth','role:user,admin'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
+<<<<<<< HEAD
     Route::get('/member/dues','DuesController@index');
     Route::get('/member/announcements', 'AnnouncementsController@index');
     Route::get('/announcements/{announcement}','AnnouncementsController@show');
     Route::resource('comments','CommentsController');
+=======
+    Route::get('/userinfo', 'HomeController@userinfo');
+>>>>>>> 25e58be59451ec4396e96395727f88b32b170636
 });
 

@@ -1,5 +1,9 @@
 @extends('layouts.app')
-@section('title', 'Welcome ')
+@php
+    $welcome = auth()->user()->username;
+@endphp
+
+@section('title', 'Welcome '. ucfirst(auth()->user()->username))
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

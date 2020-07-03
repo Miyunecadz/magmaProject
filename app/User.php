@@ -15,7 +15,7 @@ class User extends Authenticatable
      */
     public function userInfo()
     {
-        return $this->hasOne('App\UserInformation');
+        return $this->hasOne(UserInformation::class);
     }
 
     public function comments()
