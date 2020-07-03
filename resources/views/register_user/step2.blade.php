@@ -38,7 +38,7 @@
                         </div>
                         <div class="form-group ">
                             <label for="username" class="bmd-label-floating">USERNAME</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username"  value="{{ old('username') }}">
                         </div>
                         <div class="form-group ">
                             <label for="email" class="bmd-label-floating">Email Address</label>
