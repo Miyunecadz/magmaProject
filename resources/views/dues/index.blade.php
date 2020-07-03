@@ -19,7 +19,17 @@
                 </tr>
             </thead>
             <tbody>
-                @if(count($dues) > 0)
+                @if (Auth::user()->role == 'admin')
+                    @foreach ($dues as $due)
+                    <tr>
+                        <td>{{$due->slno}}</td>
+                        <td>{{$due->bill_month}}</td>
+                        <td>{{$due->bill_ammount}}</td>
+                        <td>{{$due->remarks}}</td>
+                        <td>{{$due->created_at}}</td>
+                        </tr>
+                    @endforeach
+                @elseif(Auth::user()->role == 'user')
                     @foreach ($dues as $due)
                         @if($due->user_id == Auth::user()->id)
                             <tr>

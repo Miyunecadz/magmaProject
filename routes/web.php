@@ -21,7 +21,6 @@ Route::get('storage/{filename}', function ($filename) {
 
 Auth::routes(['register' => false]);
 
-Route::get('/dues','DuesController@index')->name('dues.index');
 //Route::get('/dues/getdata','DuesController@getdata')->name('dues.getdata');
 
 Route::middleware(['auth','role:admin'])->group(function () {
@@ -40,6 +39,7 @@ Route::middleware(['auth','role:admin'])->group(function () {
 
     Route::resource('comments','CommentsController');
 
+    Route::get('/dues','DuesController@index')->name('dues.index');
     Route::get('/dues/pay', 'DuesController@pay_due');
     Route::post('dues/pay','DuesController@save_data');
 });
@@ -55,5 +55,9 @@ Route::middleware(['auth','role:guest'])->group(function () {
 
 Route::middleware(['auth','role:user,admin'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/member/dues','DuesController@index');
+    Route::get('/member/announcements', 'AnnouncementsController@index');
+    Route::get('/announcements/{announcement}','AnnouncementsController@show');
+    Route::resource('comments','CommentsController');
 });
 

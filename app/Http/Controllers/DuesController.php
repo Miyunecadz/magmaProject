@@ -32,7 +32,7 @@ class DuesController extends Controller
         $dues->remarks = $request->input('remarks');
         $dues->save();
 
-        return redirect()->back();
+        return view('dues.create');
     }
 
     public function pay_due()
