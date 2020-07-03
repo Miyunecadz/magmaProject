@@ -11,6 +11,7 @@
         <table id="dues_table" class="table table-bordered">
             <thead>
                 <tr>
+                    <th>Magma Name </th>
                     <th>SLNO </th>
                     <th>Bill Month </th>
                     <th>Bill Ammount</th>
@@ -22,6 +23,7 @@
                 @if (Auth::user()->role == 'admin')
                     @foreach ($dues as $due)
                     <tr>
+                        <td>{{$due->user->username}}</td>
                         <td>{{$due->slno}}</td>
                         <td>{{$due->bill_month}}</td>
                         <td>{{$due->bill_ammount}}</td>
