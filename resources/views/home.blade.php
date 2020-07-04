@@ -1,8 +1,4 @@
 @extends('layouts.app')
-@php
-    $welcome = auth()->user()->username;
-@endphp
-
 @section('title', 'Welcome '. ucfirst(auth()->user()->username))
 @section('content')
 <div class="container">

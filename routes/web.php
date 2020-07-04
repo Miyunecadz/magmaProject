@@ -55,7 +55,10 @@ Route::middleware(['auth','role:guest'])->group(function () {
 
 Route::middleware(['auth','role:user,admin'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
-
+    Route::get('/profile/profile/{id}', 'HomeController@userprofile');
+    Route::post('/profile/update', 'HomeController@updateprofile');
+    Route::get('/profile/information/{id}', 'HomeController@userinfo');
+    Route::post('/profile/information/update', 'HomeController@updateinfo');
     Route::get('/member/dues','DuesController@index');
     Route::get('/member/announcements', 'AnnouncementsController@index');
     Route::get('/announcements/{announcement}','AnnouncementsController@show');
