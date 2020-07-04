@@ -61,13 +61,13 @@
                             @if(auth()->user()->role == 'user')
                                 <li class="nav-item ">
                                     <a class="nav-link" href="{{ url('member/dues') }}">
-                                        <span class="badge badge-pill badge-danger">9</span> Dues
+                                         Dues
                                         <span class="sr-only">unread messages</span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
                                     <a class="nav-link " href="{{ url('member/announcements') }}">
-                                    <span class="badge badge-pill badge-info">119</span> Announcements
+                                     Announcements
                                     </a>
                                 </li>
                             @elseif(auth()->user()->role == 'admin')
