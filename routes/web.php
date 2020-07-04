@@ -60,5 +60,4 @@ Route::middleware(['auth','role:user,admin'])->group(function () {
     Route::get('/member/announcements', 'AnnouncementsController@index');
     Route::get('/announcements/{announcement}','AnnouncementsController@show');
     Route::resource('comments','CommentsController');
-    Route::get('/userinfo', 'HomeController@userinfo');
 });
