@@ -31,7 +31,7 @@ class HomeController extends Controller
     */
     public function pageDefault()
     {
-        $role =  isset(auth()->user()->role)? auth()->user()->role: '';
+        $role =  isset(auth()->user()->role)? auth()->user()->role : '';
 
         if($role == "guest")
         {
