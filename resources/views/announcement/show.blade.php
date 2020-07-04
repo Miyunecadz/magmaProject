@@ -52,7 +52,7 @@
         @foreach ($comments as $user_comment)
         <div class="card m-2">
             <div class="card-body d-flex">
-                <img src="{{$user_comment->user->profile_img}}" style="height:30px; width:30px; border-radius:50%;">
+                <img src="{{url(asset('storage/'.$user_comment->user->profile_img))}}" style="height:30px; width:30px; border-radius:50%;">
                 <div class="container">
                 <span class="mr-1"><strong>{{$user_comment->user->userInfo->chapter}} {{ $user_comment->user->userInfo->call_sign}}</strong></span>
                     <span>|</span>
