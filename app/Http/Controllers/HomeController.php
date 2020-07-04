@@ -50,12 +50,4 @@ class HomeController extends Controller
             return view('welcome');
         }
     }
-
-    /**
-     * Test Function
-     */
-    public function userinfo()
-    {
-        return json_encode(auth()->user()->userinfo());
-    }
 }
