@@ -95,7 +95,7 @@
                                 <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
 
                                     @if(auth()->user()->role == 'user')
-                                        <a class="dropdown-item small" href="{{ url('member/profile/'. auth()->user()->username) }}">
+                                        <a class="dropdown-item small" href="{{ url('/profile/profile/'. auth()->user()->id) }}">
                                             Profile
                                         </a>
                                     @endif
