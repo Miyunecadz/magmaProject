@@ -24,15 +24,17 @@ class DuesController extends Controller
             'bill_amount' => 'required',
         ]);
 
-        $dues = new Due;
-        $dues->user_id = $request->input('magma_name');
-        $dues->slno = $request->input('slno');
-        $dues->bill_month = $request->input('bill_month');
-        $dues->bill_amount = $request->input('bill_amount');
-        $dues->remarks = $request->input('remarks');
-        $dues->save();
+        $newdues = new Due;
+        $newdues->user_id = $request->input('magma_name');
+        $newdues->slno = $request->input('slno');
+        $newdues->bill_month = $request->input('bill_month');
+        $newdues->bill_amount = $request->input('bill_amount');
+        $newdues->remarks = $request->input('remarks');
+        $newdues->save();
 
-        return view('dues.create');
+        $dues = Due::orderBy('updated_at','desc')->paginate(10);
+
+        return view('dues.index',compact('dues'));
     }
 
     public function pay_due()

@@ -70,6 +70,22 @@
                                     <span class="badge badge-pill badge-info">119</span> Announcements
                                     </a>
                                 </li>
+                            @elseif(auth()->user()->role == 'admin')
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{ url('dues') }}">
+                                        Dues
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link " href="{{ url('announcements') }}">
+                                        Announcements
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link " href="{{ url('announcements') }}">
+                                        Members
+                                    </a>
+                                </li>
                             @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle  align-bottom" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -78,9 +94,11 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
 
-                                    <a class="dropdown-item small" href="{{ url('member/profile/'. auth()->user()->username) }}">
-                                        Profile
-                                    </a>
+                                    @if(auth()->user()->role == 'user')
+                                        <a class="dropdown-item small" href="{{ url('member/profile/'. auth()->user()->username) }}">
+                                            Profile
+                                        </a>
+                                    @endif
 
                                     <a class="dropdown-item small" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

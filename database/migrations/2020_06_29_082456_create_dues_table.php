@@ -18,7 +18,7 @@ class CreateDuesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('slno');
             $table->string('bill_month');
-            $table->decimal('bill_ammount');
+            $table->decimal('bill_amount');
             $table->string('remarks')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

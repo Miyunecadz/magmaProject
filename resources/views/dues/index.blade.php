@@ -4,6 +4,10 @@
 <div class="container">
     <div class="d-flex flex-row">
         <h2 class="mr-auto">Dues</h2>
+
+        @if (Auth::user()->role == 'admin')
+            <a href="{{url('dues/pay')}}" class="ml-auto">Pay Due</a>
+        @endif
     </div>
     <hr>
     <br>
@@ -11,7 +15,9 @@
         <table id="dues_table" class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Magma Name </th>
+                    @if (Auth::user()->role == 'admin')
+                        <th>Magma Name </th>
+                    @endif
                     <th>SLNO </th>
                     <th>Bill Month </th>
                     <th>Bill Ammount</th>
@@ -26,7 +32,7 @@
                         <td>{{$due->user->username}}</td>
                         <td>{{$due->slno}}</td>
                         <td>{{$due->bill_month}}</td>
-                        <td>{{$due->bill_ammount}}</td>
+                        <td>{{$due->bill_amount}}</td>
                         <td>{{$due->remarks}}</td>
                         <td>{{$due->created_at}}</td>
                         </tr>
@@ -37,7 +43,7 @@
                             <tr>
                             <td>{{$due->slno}}</td>
                             <td>{{$due->bill_month}}</td>
-                            <td>{{$due->bill_ammount}}</td>
+                            <td>{{$due->bill_amount}}</td>
                             <td>{{$due->remarks}}</td>
                             <td>{{$due->created_at}}</td>
                             </tr>
