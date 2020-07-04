@@ -22,7 +22,7 @@
                     @if (count($members) > 0)
                         @foreach ($members as $member)
                             <tr>
-                                <th><a href="#">{{$member->fullname}}</a></th>
+                            <th><a href="{{url('/profile/profile/$member->user_id')}}">{{$member->fullname}}</a></th>
                                 <th>{{$member->call_sign}}</th>
                                 <th>{{$member->chapter}}</th>
                                 <th>{{$member->home_address}}</th>
