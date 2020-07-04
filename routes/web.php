@@ -42,6 +42,7 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::get('/dues','DuesController@index')->name('dues.index');
     Route::get('/dues/pay', 'DuesController@pay_due');
     Route::post('dues/pay','DuesController@save_data');
+    Route::get('members','MagmaMembers@index');
 });
 
 

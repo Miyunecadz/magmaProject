@@ -72,17 +72,17 @@
                                 </li>
                             @elseif(auth()->user()->role == 'admin')
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="{{ url('dues') }}">
-                                        Dues
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
                                     <a class="nav-link " href="{{ url('announcements') }}">
                                         Announcements
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link " href="{{ url('announcements') }}">
+                                    <a class="nav-link" href="{{ url('dues') }}">
+                                        Dues
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link " href="{{ url('members') }}">
                                         Members
                                     </a>
                                 </li>
