@@ -19,7 +19,7 @@ Route::get('storage/{filename}', function ($filename) {
     return Storage::get('profile_img/' . $filename);
 });
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => false, 'reset' => false]);
 
 //Route::get('/dues/getdata','DuesController@getdata')->name('dues.getdata');
 
