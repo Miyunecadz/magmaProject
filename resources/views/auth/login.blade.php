@@ -18,7 +18,7 @@
                             <input id="login" type="text"
                                 class="form-control{{ $errors->has('username') || $errors->has('email') ? ' is-invalid' : '' }}"
                                 name="login" value="{{ old('username') ?: old('email') }}" required autofocus>
-                        
+
                                 @if ($errors->has('username') || $errors->has('email'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('username') ?: $errors->first('email') }}</strong>
@@ -59,11 +59,6 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
                             </div>
                         </div>
                     </form>
