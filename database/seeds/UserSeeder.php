@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             'username' => 'magmaadmin',
             'password' => Hash::make('password'),
             'email' => 'magma@admin',
-            'profile_img' => '',
+            'profile_img' => 'default-profile.png',
         ]);
 
         DB::table('users')->insert([
@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             'username' => 'magmaguest',
             'password' => Hash::make('password'),
             'email' => 'magma@guest',
-            'profile_img' => '',
+            'profile_img' => 'default-profile.png',
         ]);
     }
 }

@@ -54,7 +54,13 @@
             <div class="card-body d-flex">
                 <img src="{{url(asset('storage/'.$user_comment->user->profile_img))}}" style="height:30px; width:30px; border-radius:50%;">
                 <div class="container">
-                <span class="mr-1"><strong>{{$user_comment->user->userInfo->chapter}} {{ $user_comment->user->userInfo->call_sign}}</strong></span>
+                    <span class="mr-1"><strong>
+                    @if(empty($user_comment->user->userInfo->chapter))
+                        {{ $user_comment->user->username}}
+                    @else
+                        {{$user_comment->user->userInfo->chapter}} {{ $user_comment->user->userInfo->call_sign}}
+                    @endif
+                    </strong></span>
                     <span>|</span>
                     <small class="mr1">{{$user_comment->created_at}}</small>
 
