@@ -161,7 +161,7 @@ class HomeController extends Controller
 
         if ($request->profile_img != null)
         {
-            if ( !User::find(Requestor::get('id'))->profile_img == 'default-profile.png' )
+            if ( User::find(Requestor::get('id'))->profile_img != 'default-profile.png' )
             {
                 Storage::delete('profile_img/'. User::find(Requestor::get('id'))->profile_img);
             }
