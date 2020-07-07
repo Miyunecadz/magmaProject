@@ -78,8 +78,10 @@ class HomeController extends Controller
             'setup_drone' => 'required|numeric|min:0',
         ]);
 
-        User::find(Requestor::get('id'))->userinfo->fill($request->except('_token'));
-        User::find(Requestor::get('id'))->userinfo->save();
+        $user = User::findorfail($id);
+
+        $user->userinfo->fill($request->except('_token'));
+        $user->userinfo->save();
 
         return redirect()->back()->with('success', 'Information successfully updated!');   
     }
@@ -92,6 +94,7 @@ class HomeController extends Controller
     public function userProfile($id)
     {
         $user = User::find($id);
+        
         if($id != auth()->user()->id && auth()->user()->role !== 'admin')
         {
             abort('403', 'You are not allowed to access this page. Illegal Modification of Information');
@@ -108,6 +111,7 @@ class HomeController extends Controller
     public function updateProfile(Request $request)
     {
         $id = $request->id;
+        
         if($id != auth()->user()->id && auth()->user()->role !== 'admin')
         {
             abort('403', 'You are not allowed to access this page. Illegal Modification of Information');
@@ -159,11 +163,12 @@ class HomeController extends Controller
             'profile_img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
+
         if ($request->profile_img != null)
         {
-            if ( User::find(Requestor::get('id'))->profile_img != 'default-profile.png' )
+            if ( User::find($id)->profile_img != 'default-profile.png' )
             {
-                Storage::delete('profile_img/'. User::find(Requestor::get('id'))->profile_img);
+                Storage::delete('profile_img/'. User::find($id)->profile_img);
             }
             
             $filename = $request->username . '-profile.' . $request->profile_img->getClientOriginalExtension();
@@ -171,15 +176,17 @@ class HomeController extends Controller
         }
         else
         {
-            $filename = User::find(Requestor::get('id'))->profile_img;
+            $filename = User::find($id)->profile_img;
         }
 
+        $user = User::findorfail($id);
         if($request->old_password != null && $request->password != null){
-            User::find(Requestor::get('id'))->password = Hash::make($request->password);
+            $user->password = Hash::make($request->password);
         }
-        User::find(Requestor::get('id'))->email = $request->email;
-        User::find(Requestor::get('id'))->profile_img = $filename;
-        User::find(Requestor::get('id'))->save();
+        $user->email = $request->email;
+        $user->profile_img = $filename;
+        
+        $user->save();
 
         return redirect()->back()->with('success', 'Profile successfully updated!');   
     }
